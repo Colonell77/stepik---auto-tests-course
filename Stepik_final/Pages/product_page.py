@@ -16,3 +16,9 @@ class ProductPage(BasePage):
         cost = self.browser.find_element(*ProductPageLocators.cost_of_product).text
         cost_in_basket = self.browser.find_element(*ProductPageLocators.cost_of_product_in_basket).text
         assert cost == cost_in_basket, 'Не совпадают цены'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), 'SUCCESS MESSAGE  появился'
+
+    def message_disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), 'SUCCESS MESSAGE  появился'
