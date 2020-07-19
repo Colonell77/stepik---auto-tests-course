@@ -10,16 +10,16 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         login_url = self.browser.current_url
-        assert login_url.find(LoginPageLocators.word_in_url) != -1,\
-            f'login_URL не содержит {LoginPageLocators.word_in_url}'
+        assert login_url.find(LoginPageLocators.WORD_IN_URL) != -1,\
+            f'login_URL не содержит {LoginPageLocators.WORD_IN_URL}'
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
-        assert self.is_element_present(*LoginPageLocators.form_login_id), "Login form is not presented"
+        assert self.is_element_present(*LoginPageLocators.FORM_LOGIN_ID), "Login form is not presented"
 
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
-        assert self.is_element_present(*LoginPageLocators.form_register_id), "Register form is not presented"
+        assert self.is_element_present(*LoginPageLocators.FORM_REGISTER_ID), "Register form is not presented"
 
     def register_new_user(self, email, password):
         assert self.is_element_present(*LoginPageLocators.EMAIL_ADDRESS), "Нет поля E-MAIL в форме регистрации"
