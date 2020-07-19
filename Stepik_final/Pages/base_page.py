@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import math
 
 class BasePage():
-    def __init__(self, browser, url, timeout=1):
+    def __init__(self, browser, url, timeout=4):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -61,3 +61,7 @@ class BasePage():
         except TimeoutException:
             return False
         return True
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
